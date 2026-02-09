@@ -1,0 +1,140 @@
+:root {
+    --primary: #0f172a;
+    --accent: #6366f1;
+    --orange: #fb923c;
+    --success-green: #22c55e;
+    --bg: #f8fafc;
+    --border: #e2e8f0;
+}
+
+body { margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--primary); font-size: 16px; }
+.app-container { display: flex; height: 100vh; overflow: hidden; }
+
+/* Sidebar */
+.sidebar { width: 280px; background: var(--primary); color: white; padding: 30px 20px; display: flex; flex-direction: column; flex-shrink: 0; }
+.logo { font-size: 1.6rem; font-weight: 900; margin-bottom: 40px; display: flex; align-items: center; gap: 10px; }
+.logo span { color: var(--accent); }
+.nav-item { width: 100%; padding: 16px; margin-bottom: 8px; border: none; border-radius: 14px; background: transparent; color: #94a3b8; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 12px; transition: 0.3s; text-align: left; }
+.nav-item.active { background: white; color: var(--primary); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+
+/* Main Content Full Width */
+.main-content { flex: 1; padding: 40px; overflow-y: auto; padding-bottom: 120px; }
+.dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; width: 100%; }
+
+.hero-card { margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; }
+.hero-card h1 { font-size: 2rem; font-weight: 800; margin: 0; }
+.hero-card span { color: var(--accent); }
+
+.card { background: white; padding: 30px; border-radius: 24px; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+.card h3 { margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; }
+.dark-card { background: var(--primary); color: white; border: none; }
+
+/* Inputs Pros */
+input, select, textarea { width: 100%; padding: 15px; margin-top: 5px; margin-bottom: 20px; border: 2px solid #f1f5f9; border-radius: 12px; font-size: 1rem; box-sizing: border-box; background: #f8fafc; transition: 0.2s; }
+input:focus { border-color: var(--accent); outline: none; background: white; }
+.plate-style { font-size: 2rem !important; font-weight: 900; text-align: center; border: 3px solid var(--primary) !important; color: var(--primary); text-transform: uppercase; }
+
+/* Badges de performance */
+.roi-badge { background: #e0e7ff; color: #4338ca; padding: 15px; border-radius: 12px; text-align: center; font-weight: 800; font-size: 1.1rem; }
+.flash-item { display: flex; justify-content: space-between; margin-bottom: 15px; }
+.flash-item span { opacity: 0.7; font-size: 0.9rem; }
+.flash-item strong { font-size: 1.2rem; color: var(--success-green); }
+
+/* IA Status Bar */
+.ia-status-bar { position: fixed; bottom: 25px; left: 305px; right: 25px; height: 95px; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); border-radius: 30px; display: flex; align-items: center; padding: 0 40px; color: white; justify-content: space-between; z-index: 1000; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3); }
+.stat-group small { display: block; font-size: 0.65rem; font-weight: 800; color: #94a3b8; letter-spacing: 1px; }
+.profit-value { font-size: 1.8rem; font-weight: 900; color: var(--success-green); }
+.advice-value { font-size: 1.8rem; font-weight: 900; color: var(--orange); }
+
+/* Animation Pulse */
+.ia-central-brain { display: flex; align-items: center; gap: 20px; }
+.brain-pulse { width: 14px; height: 14px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 20px var(--orange); animation: pulse-ia 2s infinite; }
+@keyframes pulse-ia { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.6); opacity: 0.4; } 100% { transform: scale(1); opacity: 1; } }
+.confidence-bar-bg { width: 150px; height: 8px; background: rgba(255,255,255,0.1); border-radius: 10px; margin-top: 8px; }
+.confidence-bar-fill { height: 100%; background: var(--accent); width: 0%; border-radius: 10px; transition: 0.5s; }
+
+/* Modal */
+.modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); }
+.modal-content { background: white; margin: 8% auto; padding: 40px; border-radius: 30px; width: 550px; max-width: 90%; }
+.recap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.recap-item strong { display: block; font-size: 0.75rem; color: #64748b; text-transform: uppercase; }
+.recap-objection { background: #fffbeb; padding: 20px; border-radius: 15px; border-left: 6px solid var(--orange); margin-top: 25px; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .app-container { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; padding: 15px; }
+    .sidebar nav { flex-direction: row; overflow-x: auto; }
+    .ia-status-bar { left: 15px; right: 15px; bottom: 15px; padding: 0 20px; }
+}
+.checklist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.check-item {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.pill-btn {
+    border: 1px solid var(--border);
+    background: #f8fafc;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 800;
+}
+
+/* S'assure que le contenu prend toute la place */
+.main-content {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+.pill-group {
+    display: flex;
+    gap: 5px;
+}
+
+.pill-btn {
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 800;
+    background: #f1f5f9;
+    transition: 0.2s;
+}
+
+.pill-btn.btn-ok.active {
+    background: #22c55e !important;
+    color: white !important;
+    border-color: #16a34a;
+}
+
+.pill-btn.btn-ko.active {
+    background: #ef4444 !important;
+    color: white !important;
+    border-color: #dc2626;
+}
+
+.check-item small {
+    font-size: 0.65rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+}

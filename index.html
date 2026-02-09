@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OX PRO - Expert en Rentabilité</title>
+    <link rel="stylesheet" href="vitrine.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <header class="v-header">
+        <div class="v-logo"><i data-lucide="zap"></i> OX PRO</div>
+        <button class="v-btn-login" onclick="showLogin()">Connexion</button>
+    </header>
+
+    <main class="v-container" id="view-paywall">
+        <h1>Votre rentabilité sans limites.</h1>
+        <p>Accédez à l'expertise IA et l'historique illimité.</p>
+        <div class="v-grid">
+            <div class="v-card">
+                <span class="v-badge">Essai</span>
+                <h2>0€</h2>
+                <button onclick="showLogin()">Essayer</button>
+            </div>
+            <div class="v-card pro">
+                <span class="v-badge pro">Pro</span>
+                <h2>29€</h2>
+                <button onclick="showLogin()">S'abonner</button>
+            </div>
+        </div>
+    </main>
+
+    <div class="v-container" id="view-login" style="display:none;">
+        <div class="v-login-box">
+            <h1>Connexion</h1>
+            <input type="email" id="email" placeholder="Email (i@gmail.com)">
+            <input type="password" id="pass" placeholder="Password (1234)">
+            <button class="v-btn-auth" onclick="handleAuth()">Continuer</button>
+            <p onclick="showPaywall()" style="cursor:pointer; margin-top:15px; font-size:0.8rem;">← Retour aux tarifs</p>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        
+        // Navigation interne à la page
+        function showLogin() {
+            document.getElementById('view-paywall').style.display = 'none';
+            document.getElementById('view-login').style.display = 'flex';
+        }
+        function showPaywall() {
+            document.getElementById('view-login').style.display = 'none';
+            document.getElementById('view-paywall').style.display = 'block';
+        }
+
+        // Logique de connexion
+        function handleAuth() {
+            const email = document.getElementById('email').value;
+            const pass = document.getElementById('pass').value;
+            if(email === "i@gmail.com" && pass === "1234") {
+                localStorage.setItem('ox_authenticated', 'true');
+                window.location.href = 'app.html';
+            } else {
+                alert("Identifiants incorrects");
+            }
+        }
+
+        // Rediriger si déjà connecté
+        if(localStorage.getItem('ox_authenticated') === 'true') window.location.href = 'app.html';
+    </script>
+</body>
+</html>
