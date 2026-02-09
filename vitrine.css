@@ -1,11 +1,12 @@
-/* --- VARIABLES ET RESET --- */
+/* --- VARIABLES OFFICIELLES SPOTIFY --- */
 :root {
-    --spotify-green: #1ed760;
-    --bg-black: #000000;
-    --card-bg: #121212;
-    --text-white: #ffffff;
-    --text-muted: #a7a7a7;
-    --btn-hover: #1fdf64;
+    --sp-green: #1ed760;
+    --sp-black: #121212;
+    --sp-deep-black: #000000;
+    --sp-card-grey: #121212;
+    --sp-text-white: #ffffff;
+    --sp-text-muted: #a7a7a7;
+    --sp-pink: #f8d7da; /* Couleur du badge Essai */
 }
 
 * {
@@ -15,10 +16,10 @@
 }
 
 body {
-    background-color: var(--bg-black);
-    color: var(--text-white);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    line-height: 1.6;
+    background-color: var(--sp-deep-black);
+    color: var(--sp-text-white);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* --- HEADER --- */
@@ -26,179 +27,177 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 8%;
-    height: 80px;
+    padding: 15px 10%;
+    background-color: rgba(0,0,0,0.8);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .v-logo {
-    font-size: 1.5rem;
-    font-weight: 800;
+    font-size: 1.4rem;
+    font-weight: 900;
     display: flex;
     align-items: center;
-    gap: 10px;
-    letter-spacing: -1px;
+    gap: 8px;
+    color: var(--sp-text-white);
 }
 
-.v-logo i {
-    color: var(--spotify-green);
-    fill: var(--spotify-green);
-}
+.v-logo i { color: var(--sp-green); }
 
 .v-btn-login {
-    background: none;
-    border: none;
-    color: var(--text-white);
+    background-color: var(--sp-text-white);
+    color: black;
+    padding: 10px 25px;
+    border-radius: 500px;
     font-weight: 700;
-    font-size: 1rem;
+    border: none;
     cursor: pointer;
-    transition: transform 0.2s;
 }
 
-.v-btn-login:hover {
-    transform: scale(1.05);
-}
-
-/* --- CONTENEUR PRINCIPAL --- */
+/* --- CONTENEUR --- */
 .v-container {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 60px 20px;
+    padding: 80px 20px;
     text-align: center;
 }
 
 h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: 900;
-    margin-bottom: 20px;
-    letter-spacing: -2px;
+    margin-bottom: 10px;
 }
 
 .subtitle {
-    color: var(--text-muted);
-    font-size: 1.2rem;
-    margin-bottom: 60px;
+    color: var(--sp-text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 50px;
 }
 
-/* --- GRILLE DE TARIFS --- */
+/* --- GRILLE DE PRIX --- */
 .v-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .v-card {
-    background-color: var(--card-bg);
-    padding: 40px 30px;
-    border-radius: 12px;
+    background-color: var(--sp-card-grey);
+    border-radius: 8px;
+    padding: 24px;
+    width: 320px;
     text-align: left;
     display: flex;
     flex-direction: column;
     border: 1px solid #282828;
-    transition: transform 0.3s ease;
 }
 
-.v-card:hover {
-    transform: translateY(-5px);
-    border-color: #404040;
-}
-
+/* Bordure verte pour l'offre Pro */
 .v-card.pro {
-    border: 2px solid var(--spotify-green);
+    border: 2px solid var(--sp-green);
 }
 
+/* Badge rose pour l'essai */
 .v-badge {
-    background: #333;
-    color: white;
-    padding: 5px 12px;
-    border-radius: 4px;
+    background-color: var(--sp-pink);
+    color: #000;
+    font-weight: 700;
     font-size: 0.75rem;
-    font-weight: 800;
-    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 15px;
     width: fit-content;
-    margin-bottom: 20px;
 }
 
 .v-badge.pro {
-    background: var(--spotify-green);
-    color: black;
+    background-color: #0d6efd;
+    color: white;
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 800;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 h2 small {
-    font-size: 1rem;
-    color: var(--text-muted);
-    font-weight: 400;
+    display: block;
+    font-size: 0.9rem;
+    color: var(--sp-text-muted);
+    margin-top: 5px;
+}
+
+ul {
+    list-style: none;
+    margin: 20px 0;
+    flex-grow: 1;
+}
+
+ul li {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+}
+
+ul li i {
+    color: var(--sp-green);
+    margin-right: 12px;
 }
 
 /* --- BOUTONS --- */
-.v-card button, .v-btn-auth {
-    background-color: var(--spotify-green);
-    color: black;
-    border: none;
+.v-card button {
+    width: 100%;
     padding: 14px;
     border-radius: 500px;
-    font-weight: 800;
+    border: none;
+    font-weight: 700;
     font-size: 1rem;
     cursor: pointer;
-    margin-top: auto;
-    transition: background-color 0.2s, transform 0.2s;
+    transition: transform 0.1s ease;
 }
 
-.v-card button:hover, .v-btn-auth:hover {
-    background-color: var(--btn-hover);
-    transform: scale(1.02);
-}
+.v-card button:active { transform: scale(0.98); }
 
-.v-card:not(.pro) button {
-    background-color: #f8d7da; /* Rose pâle pour l'essai comme sur ta photo */
-}
+/* Bouton Rose pour l'essai */
+.v-card:not(.pro) button { background-color: var(--sp-pink); color: #000; }
+/* Bouton Vert pour le Pro */
+.v-card.pro button { background-color: var(--sp-green); color: #000; }
 
-/* --- LOGIN BOX --- */
+/* --- LOGIN VIEW --- */
 #view-login {
-    display: none; /* Piloté par JS */
-    align-items: center;
-    justify-content: center;
-    min-height: 80vh;
+    display: none;
+    padding: 40px 20px;
 }
 
 .v-login-box {
-    background-color: var(--bg-black);
-    width: 100%;
+    background-color: var(--sp-card-grey);
     max-width: 450px;
+    margin: 0 auto;
     padding: 40px;
+    border-radius: 12px;
 }
 
-.v-login-box h1 {
-    font-size: 2.5rem;
-    margin-bottom: 40px;
-}
+.v-login-box h1 { font-size: 2.2rem; margin-bottom: 30px; }
 
 .v-login-box input {
     width: 100%;
-    background-color: #121212;
-    border: 1px solid #727272;
-    color: white;
-    padding: 15px;
+    padding: 14px;
+    margin-bottom: 15px;
+    background-color: #2a2a2a;
+    border: 1px solid #404040;
     border-radius: 4px;
-    margin-bottom: 20px;
-    font-size: 1rem;
+    color: white;
 }
 
-.v-login-box input:focus {
-    outline: 2px solid white;
-    border-color: transparent;
-}
-
-.v-login-box label {
-    display: block;
-    text-align: left;
+.v-btn-auth {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--sp-green);
+    border: none;
+    border-radius: 500px;
     font-weight: 700;
-    margin-bottom: 8px;
-    font-size: 0.9rem;
+    cursor: pointer;
 }
