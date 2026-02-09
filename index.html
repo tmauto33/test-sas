@@ -15,6 +15,11 @@
 
     <main class="v-container" id="view-paywall">
         <h1>Votre rentabilité sans limites.</h1>
+        <div class="payment-methods">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+</div>
         <p>Accédez à l'expertise IA et l'historique illimité.</p>
         <div class="v-grid">
             <div class="v-card">
@@ -26,6 +31,19 @@
                 <span class="v-badge pro">Pro</span>
                 <h2>29€</h2>
                 <button onclick="showLogin()">S'abonner</button>
+                <div class="v-card">
+    <span class="v-badge">0€ pour 1 mois</span>
+    <h2>Essai Découverte</h2>
+    <span class="price-sub">0€ pendant 7 jours</span>
+    <hr>
+    <ul>
+        <li><i data-lucide="check"></i> 1er dossier complet offert</li>
+        <li><i data-lucide="check"></i> Rapport PDF exportable</li>
+        <li><i data-lucide="check"></i> Accès IA standard</li>
+    </ul>
+    <button onclick="showLogin()">Essayer gratuitement</button>
+</div>
+                                                        
             </div>
         </div>
     </main>
@@ -69,4 +87,5 @@
         if(localStorage.getItem('ox_authenticated') === 'true') window.location.href = 'app.html';
     </script>
 </body>
+
 </html>
